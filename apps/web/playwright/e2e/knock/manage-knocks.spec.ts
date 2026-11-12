@@ -103,7 +103,7 @@ test.describe("Manage Knocks", () => {
         const settingsGroup = page.getByRole("group", { name: "Asking to join" });
         await expect(settingsGroup.getByText(/^Bob/)).toBeVisible();
         await expect(settingsGroup.getByText("Hello, can I join?")).toBeVisible();
-        await settingsGroup.getByRole("button", { name: "Approve" }).click();
+        await settingsGroup.getByRole("button", { name: "Accept" }).click();
         await expect(settingsGroup.getByText(/^Bob/)).not.toBeVisible();
         await app.settings.closeDialog();
 
@@ -122,7 +122,7 @@ test.describe("Manage Knocks", () => {
         const settingsGroup = page.getByRole("group", { name: "Asking to join" });
         await expect(settingsGroup.getByText(/^Bob/)).toBeVisible();
         await expect(settingsGroup.getByText("Hello, can I join?")).toBeVisible();
-        await settingsGroup.getByRole("button", { name: "Deny" }).click();
+        await settingsGroup.getByRole("button", { name: "Decline", exact: true }).click();
         await expect(settingsGroup.getByText(/^Bob/)).not.toBeVisible();
 
         // Should receive Bob's "m.room.member" with "leave" membership when access is denied
